@@ -1,0 +1,15 @@
+
+=== Phase-0 generation benchmark ===
+model: state-spaces/mamba2-370m
+dtype: float16
+batch_size: 64
+prompt_len: 100
+gen_len: 100
+prefill_ms: 40.72663085535169
+total_generate_ms: 2142.824862152338
+approx_decode_ms: 2102.0982312969863
+decode_tokens_per_s: 3044.5770348473325
+peak_allocated_gb: 2.8793201446533203
+peak_reserved_gb: 2.998046875
+Logged JSONL: results/phase0/generate_runs.jsonl
+Logged CSV:   results/phase0/generate_runs.csv

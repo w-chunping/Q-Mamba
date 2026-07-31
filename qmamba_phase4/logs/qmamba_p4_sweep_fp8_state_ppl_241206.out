@@ -1,0 +1,259 @@
+=== Running none ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: none
+state_bits: 0
+state_quant_position: before
+ppl: 14.06495424695464
+avg_nll: 2.643686188964943
+elapsed_s: 7875.1814205329865
+tokens_per_s: 36.408050137414484
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.58984375
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running dsq ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=dsq, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: dsq
+state_bits: 4
+state_quant_position: before
+ppl: 44.938866108300886
+avg_nll: 3.80530303520391
+elapsed_s: 10546.705676469952
+tokens_per_s: 27.18574015388348
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.59375
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3 ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e4m3
+state_bits: 4
+state_quant_position: before
+ppl: 37.00001828103697
+avg_nll: 3.610918406726183
+elapsed_s: 11356.831187311094
+tokens_per_s: 25.246478993220414
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.59765625
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2 ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e5m2
+state_bits: 4
+state_quant_position: before
+ppl: 31.909361531360133
+avg_nll: 3.4628994316713078
+elapsed_s: 11298.720042732079
+tokens_per_s: 25.37632571792352
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.59765625
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_scaled_channel ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_scaled_channel, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e4m3_scaled_channel
+state_bits: 4
+state_quant_position: before
+ppl: 16.231280005973286
+avg_nll: 2.7869402450817087
+elapsed_s: 12076.891567269806
+tokens_per_s: 23.741208439517198
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.59765625
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_scaled_channel ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_scaled_channel, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e5m2_scaled_channel
+state_bits: 4
+state_quant_position: before
+ppl: 35.85892190937051
+avg_nll: 3.5795924038480518
+elapsed_s: 12132.904194153845
+tokens_per_s: 23.63160504787914
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.59765625
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_scaled_state ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_scaled_state, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e4m3_scaled_state
+state_bits: 4
+state_quant_position: before
+ppl: 15.008481708279314
+avg_nll: 2.7086154885157905
+elapsed_s: 12223.609271231107
+tokens_per_s: 23.456247139280723
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.59765625
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_scaled_state ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_scaled_state, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e5m2_scaled_state
+state_bits: 4
+state_quant_position: before
+ppl: 17.456706599053458
+avg_nll: 2.859723907135667
+elapsed_s: 12231.808282741345
+tokens_per_s: 23.44052435849178
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.59765625
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_dsq ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_dsq, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e4m3_dsq
+state_bits: 4
+state_quant_position: before
+ppl: 14.831536489382811
+avg_nll: 2.6967557576193557
+elapsed_s: 13039.832004982978
+tokens_per_s: 21.988013334100792
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.599609375
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_dsq ===
+tokens=288721, windows=140, seq_len=2048
+Loaded SQ scales from data/sq/mamba2_370m_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': None, 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_dsq, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e5m2_dsq
+state_bits: 4
+state_quant_position: before
+ppl: 17.637874658522083
+avg_nll: 2.8700485591090734
+elapsed_s: 12863.863352450076
+tokens_per_s: 22.288793976141758
+peak_allocated_gb: 1.3604226112365723
+peak_reserved_gb: 1.599609375
+sq_modules: 48
+Logged JSONL: results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_full_w8a8/recurrent_ppl_fp8_state_runs.csv

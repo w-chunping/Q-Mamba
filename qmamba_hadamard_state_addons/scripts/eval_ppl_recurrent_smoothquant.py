@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import math
+import time
+from pathlib import Path
+
+import torch
+import torch.nn.functional as F
+from datasets import load_dataset
+from tqdm import tqdm
+
+from common import append_jsonl, base_record, extract_logits, get_device, load_lm, load_tokenizer, str2dtype, update_csv_from_jsonl
+from qmamba.quant.smoothquant import apply_smoothquant_fake, load_sq_scales
+
+
+def parse_args():
+    p = argparse.ArgumentParser(description="Recurrent PPL with optional ESR checkpoint, SmoothQuant W8A8, and state DSQ.")
+    p.add_argument("--model", type=str, default="state-spaces/mamba2-370m")
+    p.add_argument("--loader", choices=["mamba_ssm"], default="mamba_ssm")
+    p.add_argument("--tokenizer", type=str, default=None)
+    p.add_argument("--dataset", choices=["wikitext2", "text"], default="wikitext2")
+    p.add_argument("--split", type=str, default="test")
+    p.add_argument("--text_file", type=str, default=None)
+    p.add_argument("--seq_len", type=int, default=2048)
+    p.add_argument("--stride", type=int, default=2048)
+    p.add_argument("--batch_size", type=int, default=1)
+    p.add_argument("--max_windows", type=int, default=0)
+    p.add_argument("--dtype", choices=["float16", "bfloat16", "float32"], default="float16")
+    p.add_argument("--device", type=str, default="auto")
+    p.add_argument("--checkpoint", type=str, default=None)
+    p.add_argument("--state_quant", choices=["none", "tensor", "channel", "state", "dsq"], default="none")
+    p.add_argument("--state_bits", type=int, default=4)
+    p.add_argument("--state_quant_position", choices=["before", "after", "both"], default="before")
+    p.add_argument("--sq_scales", type=str, default=None)
+    p.add_argument("--sq_alpha", type=float, default=0.5)
+    p.add_argument("--sq_target", choices=["mixer", "in_proj", "out_proj", "all"], default="mixer")
+    p.add_argument("--act_bits", type=int, default=8)
+    p.add_argument("--weight_bits", type=int, default=8)
+    p.add_argument("--disable_act_quant", action="store_true")
+    p.add_argument("--disable_weight_quant", action="store_true")
+    p.add_argument("--out_dir", type=str, default="results/smoothquant")
+    p.add_argument("--log_name", type=str, default="recurrent_ppl_smoothquant_runs")
+    return p.parse_args()
+
+
+def load_text(args):
+    if args.dataset == "wikitext2":
+        ds = load_dataset("wikitext", "wikitext-2-raw-v1", split=args.split)
+        return "\n\n".join(t for t in ds["text"] if t and t.strip())
+    if args.dataset == "text":
+        return Path(args.text_file).read_text(encoding="utf-8")
+    raise ValueError(args.dataset)
+
+
+def make_windows(tokens, seq_len, stride, max_windows):
+    starts = list(range(0, max(0, tokens.numel() - seq_len - 1), stride))
+    if max_windows and max_windows > 0: starts = starts[:max_windows]
+    return starts
+
+
+def load_optional_checkpoint(model, path):
+    if path is None: return 0, 0
+    print(f"Loading checkpoint: {path}")
+    ckpt = torch.load(path, map_location="cpu")
+    if isinstance(ckpt, dict) and "model" in ckpt: ckpt = ckpt["model"]
+    missing, unexpected = model.load_state_dict(ckpt, strict=False)
+    print(f"Missing keys: {len(missing)}")
+    print(f"Unexpected keys: {len(unexpected)}")
+    return len(missing), len(unexpected)
+
+
+def main():
+    args = parse_args()
+    device = get_device(args.device); dtype = str2dtype(args.dtype)
+    out_dir = Path(args.out_dir); jsonl_path = out_dir / f"{args.log_name}.jsonl"; csv_path = out_dir / f"{args.log_name}.csv"
+
+    tok = load_tokenizer(args.model, args.tokenizer, args.loader)
+    tokens = tok(load_text(args), return_tensors="pt").input_ids.squeeze(0).contiguous()
+    starts = make_windows(tokens, args.seq_len, args.stride, args.max_windows)
+
+    model = load_lm(args.model, args.loader, dtype, device)
+    missing, unexpected = load_optional_checkpoint(model, args.checkpoint)
+
+    sq_applied = 0
+    if args.sq_scales is not None:
+        scales, meta = load_sq_scales(args.sq_scales)
+        print(f"Loaded SQ scales from {args.sq_scales}; meta={meta}")
+        sq_applied = apply_smoothquant_fake(
+            model, scales, alpha=args.sq_alpha, act_bits=args.act_bits, weight_bits=args.weight_bits,
+            target=args.sq_target, quantize_activation=not args.disable_act_quant, quantize_weight=not args.disable_weight_quant,
+        )
+
+    if args.state_quant != "none":
+        from qmamba.patch.patch_mamba2_state_quant import patch_mamba2_step_state_quant
+        model = patch_mamba2_step_state_quant(model, method=args.state_quant, bits=args.state_bits, quant_position=args.state_quant_position)
+    model.eval()
+
+    from mamba_ssm.utils.generation import InferenceParams
+    if device.type == "cuda": torch.cuda.empty_cache(); torch.cuda.reset_peak_memory_stats()
+    total_nll = 0.0; total_tokens = 0; t0 = time.perf_counter()
+    with torch.no_grad():
+        for i in tqdm(range(0, len(starts), args.batch_size), desc="Recurrent PPL windows"):
+            ss = starts[i:i+args.batch_size]
+            batch = torch.stack([tokens[s:s+args.seq_len+1] for s in ss], dim=0).to(device)
+            bsz = batch.shape[0]
+            inference_params = InferenceParams(max_seqlen=args.seq_len + 1, max_batch_size=bsz, seqlen_offset=0)
+            for t in range(args.seq_len):
+                out = model(batch[:, t:t+1], inference_params=inference_params, num_last_tokens=1)
+                logits = extract_logits(out)[:, -1, :].float()
+                label = batch[:, t+1]
+                loss = F.cross_entropy(logits, label, reduction="sum")
+                total_nll += float(loss.cpu()); total_tokens += label.numel()
+                inference_params.seqlen_offset += 1
+    if device.type == "cuda": torch.cuda.synchronize()
+    elapsed = time.perf_counter() - t0
+    avg_nll = total_nll / total_tokens; ppl = math.exp(avg_nll) if avg_nll < 80 else float("inf")
+    record = base_record("eval_ppl_recurrent_smoothquant.py")
+    record.update({
+        "model": args.model, "loader": args.loader, "dataset": args.dataset, "split": args.split, "dtype": args.dtype,
+        "seq_len": args.seq_len, "stride": args.stride, "batch_size": args.batch_size, "num_windows": len(starts),
+        "total_tokens": total_tokens, "avg_nll": avg_nll, "ppl": ppl, "elapsed_s": elapsed, "tokens_per_s": total_tokens / elapsed,
+        "peak_allocated_gb": torch.cuda.max_memory_allocated()/1024**3 if device.type == "cuda" else 0,
+        "peak_reserved_gb": torch.cuda.max_memory_reserved()/1024**3 if device.type == "cuda" else 0,
+        "checkpoint": args.checkpoint, "state_quant": args.state_quant, "state_bits": args.state_bits, "state_quant_position": args.state_quant_position,
+        "sq_scales": args.sq_scales, "sq_alpha": args.sq_alpha, "sq_target": args.sq_target, "act_bits": args.act_bits, "weight_bits": args.weight_bits,
+        "sq_modules": sq_applied, "missing_keys": missing, "unexpected_keys": unexpected, "recurrent_eval": True,
+    })
+    append_jsonl(jsonl_path, record); update_csv_from_jsonl(jsonl_path, csv_path)
+    print("\n=== Recurrent SmoothQuant/state-quant PPL result ===")
+    for k in ["model", "dataset", "dtype", "seq_len", "batch_size", "num_windows", "state_quant", "state_bits", "ppl", "avg_nll", "elapsed_s", "tokens_per_s", "peak_allocated_gb", "sq_modules", "sq_alpha", "sq_target"]:
+        print(f"{k}: {record[k]}")
+    print(f"Logged JSONL: {jsonl_path}")
+    print(f"Logged CSV:   {csv_path}")
+
+
+if __name__ == "__main__": main()

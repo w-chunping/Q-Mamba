@@ -1,0 +1,46 @@
+tokens=288721, windows=140, seq_len=2048
+[HadamardStateQuant] patched Mamba2.step: method=fp8_e4m3, bits=8, hadamard_dims=state, position=before, channel_dim=-2, state_dim=-1, qrange=symmetric
+
+=== Hadamard State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e4m3
+state_bits: 8
+hadamard_dims: state
+state_quant_position: before
+ppl: 17.21215401525798
+avg_nll: 2.8456157630688996
+elapsed_s: 17916.82356081577
+tokens_per_s: 16.002836609222342
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/hadamard_state/recurrent_ppl_hadamard_state_runs.jsonl
+Logged CSV:   results/hadamard_state/recurrent_ppl_hadamard_state_runs.csv
+tokens=288721, windows=140, seq_len=2048
+[HadamardStateQuant] patched Mamba2.step: method=tensor, bits=8, hadamard_dims=none, position=before, channel_dim=-2, state_dim=-1, qrange=symmetric
+
+=== Hadamard State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: tensor
+state_bits: 8
+hadamard_dims: none
+state_quant_position: before
+ppl: 1476.620954081794
+avg_nll: 7.297511617288155
+elapsed_s: 8067.745560384821
+tokens_per_s: 35.53904840627173
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.3125
+sq_modules: 0
+Logged JSONL: results/hadamard_state/recurrent_ppl_hadamard_state_runs.jsonl
+Logged CSV:   results/hadamard_state/recurrent_ppl_hadamard_state_runs.csv

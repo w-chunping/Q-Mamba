@@ -1,0 +1,49 @@
+Loaded SQ scales from data/sq/mamba2_370m_esr_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': 'ckpt/esr_rp_b48_lr1e3_3ep/mamba2_370m_esr_parallel.pt', 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+
+=== Recurrent SmoothQuant/state-quant PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: none
+state_bits: 4
+ppl: 14.023530233880734
+avg_nll: 2.6407366497590226
+elapsed_s: 6366.353702447843
+tokens_per_s: 45.03676883201715
+peak_allocated_gb: 0.9590554237365723
+sq_modules: 48
+sq_alpha: 0.5
+sq_target: mixer
+Logged JSONL: results/smoothquant_debug/recurrent_ppl_smoothquant_runs.jsonl
+Logged CSV:   results/smoothquant_debug/recurrent_ppl_smoothquant_runs.csv
+Loaded SQ scales from data/sq/mamba2_370m_esr_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': 'ckpt/esr_rp_b48_lr1e3_3ep/mamba2_370m_esr_parallel.pt', 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']
+
+=== Recurrent SmoothQuant/state-quant PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: none
+state_bits: 4
+ppl: 14.027855607090304
+avg_nll: 2.641045039032078
+elapsed_s: 6523.570516958833
+tokens_per_s: 43.95139122887316
+peak_allocated_gb: 1.3604226112365723
+sq_modules: 48
+sq_alpha: 0.5
+sq_target: mixer
+Logged JSONL: results/smoothquant_debug/recurrent_ppl_smoothquant_runs.jsonl
+Logged CSV:   results/smoothquant_debug/recurrent_ppl_smoothquant_runs.csv
+Loaded SQ scales from data/sq/mamba2_370m_esr_rp128x2048_mixer.pt; meta={'model': 'state-spaces/mamba2-370m', 'checkpoint': 'ckpt/esr_rp_b48_lr1e3_3ep/mamba2_370m_esr_parallel.pt', 'calib': 'data/calib/redpajama_128x2048.pt', 'num_samples': 128, 'seq_len': 2048, 'target': 'mixer', 'dtype': 'bfloat16'}
+[SmoothQuant] replaced 48/96 target Linear modules with fake W8A8, alpha=0.5
+[SmoothQuant] missing activation scales for 48 modules. First few: ['backbone.layers.0.mixer.out_proj', 'backbone.layers.1.mixer.out_proj', 'backbone.layers.2.mixer.out_proj', 'backbone.layers.3.mixer.out_proj', 'backbone.layers.4.mixer.out_proj']

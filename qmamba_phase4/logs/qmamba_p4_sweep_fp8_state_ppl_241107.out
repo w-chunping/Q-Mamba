@@ -1,0 +1,26 @@
+=== Running fp8_e5m2_dsq ===
+tokens=288721, windows=140, seq_len=2048
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_dsq, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: fp8_e5m2_dsq
+state_bits: 4
+state_quant_position: before
+ppl: 17.556790318681177
+avg_nll: 2.8654407878258064
+elapsed_s: 11608.231541698799
+tokens_per_s: 24.69971407531385
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.3203125
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_full/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_full/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_dsq_rms ===
+tokens=288721, windows=140, seq_len=2048
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_dsq_rms, bits=4, position=before, channel_dim=-2, state_dim=-1

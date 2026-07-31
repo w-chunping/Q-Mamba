@@ -1,0 +1,19 @@
+
+=== Phase-1 recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: none
+state_bits: 4
+state_quant_position: before
+ppl: 14.023878792939165
+avg_nll: 2.640761504750663
+elapsed_s: 5588.925805510953
+tokens_per_s: 51.30145039987472
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.310546875
+Logged JSONL: results/phase1/recurrent_ppl_runs.jsonl
+Logged CSV:   results/phase1/recurrent_ppl_runs.csv

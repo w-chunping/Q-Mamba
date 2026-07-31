@@ -1,0 +1,3 @@
+/home/cpwang5880/.conda/envs/qmamba/lib/python3.10/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+slurmstepd-hgpn01: error: *** JOB 233463 ON hgpn01 CANCELLED AT 2026-06-12T01:17:44 ***

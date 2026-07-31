@@ -1,0 +1,11 @@
+# Install PyTorch separately for your CUDA version, e.g. cu121/cu124.
+# pip install torch --index-url https://download.pytorch.org/whl/cu121
+transformers==4.44.2
+datasets>=2.20.0
+accelerate>=0.33.0
+einops>=0.8.0
+tqdm>=4.66.0
+pandas>=2.0.0
+psutil>=5.9.0
+# For native state-spaces Mamba models. Install after torch is available.
+# pip install causal-conv1d mamba-ssm --no-build-isolation

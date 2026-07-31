@@ -1,0 +1,78 @@
+tokens=288721, windows=1, seq_len=2048
+[state dump] saved 48 layers to results/state_dumps/mamba2_370m_wt2_fp16_states.pt
+
+=== Hadamard State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 1
+state_quant: none
+state_bits: 8
+hadamard_dims: none
+state_quant_position: before
+ppl: 11.157214325925636
+avg_nll: 2.4120863134225567
+elapsed_s: 51.879165505990386
+tokens_per_s: 39.476348164534784
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.310546875
+sq_modules: 0
+dump_states: results/state_dumps/mamba2_370m_wt2_fp16_states.pt
+Logged JSONL: results/state_dump_eval/recurrent_ppl_hadamard_state_runs.jsonl
+Logged CSV:   results/state_dump_eval/recurrent_ppl_hadamard_state_runs.csv
+[load] results/state_dumps/mamba2_370m_wt2_fp16_states.pt
+[info] found 48 state tensors
+[layer 0] layer0, shape=(16, 1, 32, 64, 128)
+[layer 1] layer1, shape=(16, 1, 32, 64, 128)
+[layer 2] layer10, shape=(16, 1, 32, 64, 128)
+[layer 3] layer11, shape=(16, 1, 32, 64, 128)
+[layer 4] layer12, shape=(16, 1, 32, 64, 128)
+[layer 5] layer13, shape=(16, 1, 32, 64, 128)
+[layer 6] layer14, shape=(16, 1, 32, 64, 128)
+[layer 7] layer15, shape=(16, 1, 32, 64, 128)
+[layer 8] layer16, shape=(16, 1, 32, 64, 128)
+[layer 9] layer17, shape=(16, 1, 32, 64, 128)
+[layer 10] layer18, shape=(16, 1, 32, 64, 128)
+[layer 11] layer19, shape=(16, 1, 32, 64, 128)
+[layer 12] layer2, shape=(16, 1, 32, 64, 128)
+[layer 13] layer20, shape=(16, 1, 32, 64, 128)
+[layer 14] layer21, shape=(16, 1, 32, 64, 128)
+[layer 15] layer22, shape=(16, 1, 32, 64, 128)
+[layer 16] layer23, shape=(16, 1, 32, 64, 128)
+[layer 17] layer24, shape=(16, 1, 32, 64, 128)
+[layer 18] layer25, shape=(16, 1, 32, 64, 128)
+[layer 19] layer26, shape=(16, 1, 32, 64, 128)
+[layer 20] layer27, shape=(16, 1, 32, 64, 128)
+[layer 21] layer28, shape=(16, 1, 32, 64, 128)
+[layer 22] layer29, shape=(16, 1, 32, 64, 128)
+[layer 23] layer3, shape=(16, 1, 32, 64, 128)
+[layer 24] layer30, shape=(16, 1, 32, 64, 128)
+[layer 25] layer31, shape=(16, 1, 32, 64, 128)
+[layer 26] layer32, shape=(16, 1, 32, 64, 128)
+[layer 27] layer33, shape=(16, 1, 32, 64, 128)
+[layer 28] layer34, shape=(16, 1, 32, 64, 128)
+[layer 29] layer35, shape=(16, 1, 32, 64, 128)
+[layer 30] layer36, shape=(16, 1, 32, 64, 128)
+[layer 31] layer37, shape=(16, 1, 32, 64, 128)
+[layer 32] layer38, shape=(16, 1, 32, 64, 128)
+[layer 33] layer39, shape=(16, 1, 32, 64, 128)
+[layer 34] layer4, shape=(16, 1, 32, 64, 128)
+[layer 35] layer40, shape=(16, 1, 32, 64, 128)
+[layer 36] layer41, shape=(16, 1, 32, 64, 128)
+[layer 37] layer42, shape=(16, 1, 32, 64, 128)
+[layer 38] layer43, shape=(16, 1, 32, 64, 128)
+[layer 39] layer44, shape=(16, 1, 32, 64, 128)
+[layer 40] layer45, shape=(16, 1, 32, 64, 128)
+[layer 41] layer46, shape=(16, 1, 32, 64, 128)
+[layer 42] layer47, shape=(16, 1, 32, 64, 128)
+[layer 43] layer5, shape=(16, 1, 32, 64, 128)
+[layer 44] layer6, shape=(16, 1, 32, 64, 128)
+[layer 45] layer7, shape=(16, 1, 32, 64, 128)
+[layer 46] layer8, shape=(16, 1, 32, 64, 128)
+[layer 47] layer9, shape=(16, 1, 32, 64, 128)
+[save] results/state_quant_error_wt2/metrics_by_layer.csv
+[save] results/state_quant_error_wt2/metrics_summary.csv
+[done]
+Outputs saved to: results/state_quant_error_wt2

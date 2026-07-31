@@ -1,0 +1,367 @@
+=== Running none ===
+tokens=288721, windows=8, seq_len=512
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: none
+state_bits: 0
+state_quant_position: before
+ppl: 19.857194448901687
+avg_nll: 2.9885663822181314
+elapsed_s: 95.14982490520924
+tokens_per_s: 43.04789844942482
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.310546875
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running dsq ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=dsq, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: dsq
+state_bits: 4
+state_quant_position: before
+ppl: 24.33276621547765
+avg_nll: 3.1918238459954402
+elapsed_s: 140.62395159713924
+tokens_per_s: 29.127328264350425
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.314453125
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3 ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e4m3
+state_bits: 4
+state_quant_position: before
+ppl: 29.11953574422767
+avg_nll: 3.371409280352072
+elapsed_s: 150.8490509679541
+tokens_per_s: 27.152971621081935
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2 ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e5m2
+state_bits: 4
+state_quant_position: before
+ppl: 23.984321419070397
+avg_nll: 3.1774003426659743
+elapsed_s: 151.1593997431919
+tokens_per_s: 27.097223242211776
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_scaled_tensor ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_scaled_tensor, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e4m3_scaled_tensor
+state_bits: 4
+state_quant_position: before
+ppl: 21.427188327706702
+avg_nll: 3.0646605982508226
+elapsed_s: 163.17204601410776
+tokens_per_s: 25.10233891193509
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_scaled_tensor ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_scaled_tensor, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e5m2_scaled_tensor
+state_bits: 4
+state_quant_position: before
+ppl: 45.242017181375985
+avg_nll: 3.8120262387016295
+elapsed_s: 165.4779757373035
+tokens_per_s: 24.752538709455845
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_scaled_head ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_scaled_head, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e4m3_scaled_head
+state_bits: 4
+state_quant_position: before
+ppl: 21.011256870981562
+avg_nll: 3.0450583355798253
+elapsed_s: 165.97472109785303
+tokens_per_s: 24.67845689335509
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_scaled_head ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_scaled_head, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e5m2_scaled_head
+state_bits: 4
+state_quant_position: before
+ppl: 33.58310996177137
+avg_nll: 3.514023260874172
+elapsed_s: 161.8859763778746
+tokens_per_s: 25.30175924836817
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_scaled_channel ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_scaled_channel, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e4m3_scaled_channel
+state_bits: 4
+state_quant_position: before
+ppl: 21.280697045136066
+avg_nll: 3.0578004198174358
+elapsed_s: 164.56143082492054
+tokens_per_s: 24.89040098562219
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_scaled_channel ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_scaled_channel, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e5m2_scaled_channel
+state_bits: 4
+state_quant_position: before
+ppl: 40.28758512293797
+avg_nll: 3.6960433600263976
+elapsed_s: 165.0505354879424
+tokens_per_s: 24.816641690321745
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_scaled_state ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_scaled_state, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e4m3_scaled_state
+state_bits: 4
+state_quant_position: before
+ppl: 19.953326631353963
+avg_nll: 2.993395877873692
+elapsed_s: 164.36212461767718
+tokens_per_s: 24.920583191095318
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_scaled_state ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_scaled_state, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e5m2_scaled_state
+state_bits: 4
+state_quant_position: before
+ppl: 20.427496893294737
+avg_nll: 3.016881880192256
+elapsed_s: 165.6158567601815
+tokens_per_s: 24.731931350819718
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.318359375
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_dsq ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_dsq, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e4m3_dsq
+state_bits: 4
+state_quant_position: before
+ppl: 19.988298407797945
+avg_nll: 2.995147022718023
+elapsed_s: 178.07307344069704
+tokens_per_s: 23.001793145127436
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.3203125
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_dsq ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_dsq, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e5m2_dsq
+state_bits: 4
+state_quant_position: before
+ppl: 20.49366059634986
+avg_nll: 3.0201155991176147
+elapsed_s: 175.2287510158494
+tokens_per_s: 23.375159477279603
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.3203125
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e4m3_dsq_rms ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e4m3_dsq_rms, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e4m3_dsq_rms
+state_bits: 4
+state_quant_position: before
+ppl: 37.55342000381741
+avg_nll: 3.6257644527263135
+elapsed_s: 178.2306012660265
+tokens_per_s: 22.981463176945255
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.3203125
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv
+=== Running fp8_e5m2_dsq_rms ===
+tokens=288721, windows=8, seq_len=512
+[FP8/StateQuant] patched Mamba2.step: method=fp8_e5m2_dsq_rms, bits=4, position=before, channel_dim=-2, state_dim=-1
+
+=== FP8/State recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 512
+batch_size: 1
+num_windows: 8
+state_quant: fp8_e5m2_dsq_rms
+state_bits: 4
+state_quant_position: before
+ppl: inf
+avg_nll: nan
+elapsed_s: 178.95406911708415
+tokens_per_s: 22.88855470126311
+peak_allocated_gb: 0.9588608741760254
+peak_reserved_gb: 1.3203125
+sq_modules: 0
+Logged JSONL: results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.jsonl
+Logged CSV:   results/fp8_state_sweep_w8/recurrent_ppl_fp8_state_runs.csv

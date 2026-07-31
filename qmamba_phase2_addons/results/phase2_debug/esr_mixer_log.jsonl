@@ -1,0 +1,1 @@
+{"time": "2026-06-12 04:01:47", "block_idx": 0, "epochs": 1, "num_samples": 2, "seq_len": 128, "train_mode": "sga", "qmode": "esr", "state_quant": "dsq", "state_bits": 4, "loss_first": 0.00366284791380167, "loss_last": NaN, "loss_mean": NaN, "elapsed_s": 8.214528164826334}

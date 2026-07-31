@@ -1,0 +1,60 @@
+[Q-Mamba] patched 48 Mamba2.step modules: method=channel, bits=8, position=before
+
+=== Phase-1 recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: channel
+state_bits: 8
+state_quant_position: before
+ppl: 30.196065244734637
+avg_nll: 3.407711625982907
+elapsed_s: 7404.733934117947
+tokens_per_s: 38.7211752037319
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.310546875
+Logged JSONL: results/phase1_h8/recurrent_ppl_runs.jsonl
+Logged CSV:   results/phase1_h8/recurrent_ppl_runs.csv
+[Q-Mamba] patched 48 Mamba2.step modules: method=state, bits=8, position=before
+
+=== Phase-1 recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: state
+state_bits: 8
+state_quant_position: before
+ppl: 15.202466765959478
+avg_nll: 2.7214577019192583
+elapsed_s: 7686.504834366031
+tokens_per_s: 37.30173937029055
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.310546875
+Logged JSONL: results/phase1_h8/recurrent_ppl_runs.jsonl
+Logged CSV:   results/phase1_h8/recurrent_ppl_runs.csv
+[Q-Mamba] patched 48 Mamba2.step modules: method=dsq, bits=8, position=before
+
+=== Phase-1 recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: dsq
+state_bits: 8
+state_quant_position: before
+ppl: 14.180097115027454
+avg_nll: 2.6518393698130716
+elapsed_s: 8376.555967801716
+tokens_per_s: 34.22886459567759
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.314453125
+Logged JSONL: results/phase1_h8/recurrent_ppl_runs.jsonl
+Logged CSV:   results/phase1_h8/recurrent_ppl_runs.csv

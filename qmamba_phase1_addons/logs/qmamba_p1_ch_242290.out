@@ -1,0 +1,21 @@
+[Q-Mamba] patched 48 Mamba2.step modules: method=channel, bits=6, position=before
+
+=== Phase-1 recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: channel
+state_bits: 6
+state_quant_position: before
+ppl: 153.93038491430727
+avg_nll: 5.036500454199038
+elapsed_s: 7847.251053513028
+tokens_per_s: 36.53763566945425
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.310546875
+Logged JSONL: results/phase1/recurrent_ppl_runs.jsonl
+Logged CSV:   results/phase1/recurrent_ppl_runs.csv
+[Q-Mamba] patched 48 Mamba2.step modules: method=channel, bits=8, position=before

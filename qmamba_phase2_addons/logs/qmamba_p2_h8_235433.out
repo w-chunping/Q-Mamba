@@ -1,0 +1,224 @@
+Loading calibration tokens...
+calib shape: (8, 2048)
+Loading teacher...
+Loading student...
+Reconstructing blocks [0, 48) out of 48
+qmode=esr, state_quant=dsq, bits=8, train_mode=sga, scan_chunk_size=0
+active SGA delta params: 294,912
+
+[Block 0] trainable params in current mixer: 294,944
+[Block 0] first loss=5.9415e-05, last loss=3.1340e-04, elapsed=12.7s
+active SGA delta params: 294,912
+
+[Block 1] trainable params in current mixer: 294,944
+[Block 1] first loss=4.1975e-06, last loss=1.7709e-03, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 2] trainable params in current mixer: 294,944
+[Block 2] first loss=4.2748e-06, last loss=2.2571e-04, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 3] trainable params in current mixer: 294,944
+[Block 3] first loss=5.5337e-06, last loss=3.6727e-04, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 4] trainable params in current mixer: 294,944
+[Block 4] first loss=5.3292e-06, last loss=1.2257e-05, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 5] trainable params in current mixer: 294,944
+[Block 5] first loss=6.2157e-06, last loss=2.4583e-04, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 6] trainable params in current mixer: 294,944
+[Block 6] first loss=9.9137e-06, last loss=3.7502e-04, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 7] trainable params in current mixer: 294,944
+[Block 7] first loss=9.6992e-06, last loss=4.5621e-05, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 8] trainable params in current mixer: 294,944
+[Block 8] first loss=1.5774e-05, last loss=2.7354e-04, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 9] trainable params in current mixer: 294,944
+[Block 9] first loss=1.6665e-05, last loss=1.3462e-03, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 10] trainable params in current mixer: 294,944
+[Block 10] first loss=2.0450e-05, last loss=2.6874e-04, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 11] trainable params in current mixer: 294,944
+[Block 11] first loss=5.2427e-05, last loss=2.9340e-04, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 12] trainable params in current mixer: 294,944
+[Block 12] first loss=3.3605e-05, last loss=2.4738e-03, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 13] trainable params in current mixer: 294,944
+[Block 13] first loss=5.8187e-05, last loss=1.4439e-02, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 14] trainable params in current mixer: 294,944
+[Block 14] first loss=4.3356e-05, last loss=6.5056e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 15] trainable params in current mixer: 294,944
+[Block 15] first loss=5.7170e-05, last loss=1.7244e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 16] trainable params in current mixer: 294,944
+[Block 16] first loss=4.6192e-05, last loss=6.9786e-04, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 17] trainable params in current mixer: 294,944
+[Block 17] first loss=1.0855e-04, last loss=3.1106e-02, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 18] trainable params in current mixer: 294,944
+[Block 18] first loss=3.5387e-05, last loss=7.1190e-04, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 19] trainable params in current mixer: 294,944
+[Block 19] first loss=1.3253e-04, last loss=2.7580e-02, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 20] trainable params in current mixer: 294,944
+[Block 20] first loss=6.1417e-05, last loss=1.2940e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 21] trainable params in current mixer: 294,944
+[Block 21] first loss=7.4690e-05, last loss=7.1417e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 22] trainable params in current mixer: 294,944
+[Block 22] first loss=7.5079e-05, last loss=1.4448e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 23] trainable params in current mixer: 294,944
+[Block 23] first loss=8.2342e-05, last loss=3.3873e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 24] trainable params in current mixer: 294,944
+[Block 24] first loss=9.0007e-05, last loss=6.6776e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 25] trainable params in current mixer: 294,944
+[Block 25] first loss=8.9800e-05, last loss=2.0941e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 26] trainable params in current mixer: 294,944
+[Block 26] first loss=1.4470e-04, last loss=1.6854e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 27] trainable params in current mixer: 294,944
+[Block 27] first loss=1.5540e-04, last loss=9.5993e-03, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 28] trainable params in current mixer: 294,944
+[Block 28] first loss=2.9281e-04, last loss=2.3995e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 29] trainable params in current mixer: 294,944
+[Block 29] first loss=1.9104e-04, last loss=5.8954e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 30] trainable params in current mixer: 294,944
+[Block 30] first loss=4.6128e-04, last loss=8.5321e-02, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 31] trainable params in current mixer: 294,944
+[Block 31] first loss=2.4368e-04, last loss=7.0694e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 32] trainable params in current mixer: 294,944
+[Block 32] first loss=4.1938e-04, last loss=1.0457e-01, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 33] trainable params in current mixer: 294,944
+[Block 33] first loss=3.6500e-04, last loss=3.2959e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 34] trainable params in current mixer: 294,944
+[Block 34] first loss=2.7619e-04, last loss=8.7766e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 35] trainable params in current mixer: 294,944
+[Block 35] first loss=5.6678e-04, last loss=3.7133e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 36] trainable params in current mixer: 294,944
+[Block 36] first loss=7.1735e-04, last loss=2.8689e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 37] trainable params in current mixer: 294,944
+[Block 37] first loss=6.5372e-04, last loss=1.1444e-01, elapsed=5.3s
+active SGA delta params: 294,912
+
+[Block 38] trainable params in current mixer: 294,944
+[Block 38] first loss=3.2467e-03, last loss=4.2267e-01, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 39] trainable params in current mixer: 294,944
+[Block 39] first loss=7.4977e-04, last loss=1.0045e-01, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 40] trainable params in current mixer: 294,944
+[Block 40] first loss=8.4394e-04, last loss=1.4243e-01, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 41] trainable params in current mixer: 294,944
+[Block 41] first loss=6.2880e-04, last loss=6.2245e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 42] trainable params in current mixer: 294,944
+[Block 42] first loss=7.8745e-04, last loss=2.2891e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 43] trainable params in current mixer: 294,944
+[Block 43] first loss=8.1939e-04, last loss=1.2090e-02, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 44] trainable params in current mixer: 294,944
+[Block 44] first loss=1.4244e-03, last loss=7.5894e-01, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 45] trainable params in current mixer: 294,944
+[Block 45] first loss=2.5736e-03, last loss=8.3864e-03, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 46] trainable params in current mixer: 294,944
+[Block 46] first loss=1.0279e-02, last loss=9.1151e-01, elapsed=5.4s
+active SGA delta params: 294,912
+
+[Block 47] trainable params in current mixer: 294,944
+[Block 47] first loss=1.9377e-02, last loss=3.2377e-02, elapsed=5.3s
+
+Saved final student state_dict: results/phase2_parallel_b48_lr1e3_3ep_h8/mamba2_370m_esr_parallel.pt
+Log: results/phase2_parallel_b48_lr1e3_3ep_h8/esr_parallel_log.jsonl
+Loading checkpoint: results/phase2_parallel_b48_lr1e3_3ep_h8/mamba2_370m_esr_parallel.pt
+Missing keys: 0
+Unexpected keys: 0
+[Q-Mamba] patched 48 Mamba2.step modules: method=dsq, bits=8, position=before
+
+=== Phase-1 recurrent PPL result ===
+model: state-spaces/mamba2-370m
+dataset: wikitext2
+dtype: float16
+seq_len: 2048
+batch_size: 1
+num_windows: 140
+state_quant: dsq
+state_bits: 8
+state_quant_position: before
+ppl: 14.204492016560106
+avg_nll: 2.6535582537768954
+elapsed_s: 8929.5997961401
+tokens_per_s: 32.108941783027866
+peak_allocated_gb: 0.9588723182678223
+peak_reserved_gb: 1.314453125
+Logged JSONL: results/phase2_eval_all/recurrent_ppl_runs.jsonl
+Logged CSV:   results/phase2_eval_all/recurrent_ppl_runs.csv
