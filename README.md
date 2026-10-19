@@ -1,8 +1,8 @@
-# QMamba
+# Q-Mamba
 
 **Quantization experiments for the recurrent hidden state of Mamba2.**
 
-QMamba is a research prototype for studying how low-precision state representations affect autoregressive Mamba2 inference. The repository builds from an FP16 baseline through INT state quantization, ESR-style reconstruction, SmoothQuant W8A8, FP8 state quantization, and Hadamard rotations for suppressing state outliers.
+Q-Mamba is a research prototype for studying how low-precision state representations affect autoregressive Mamba2 inference. The repository builds from an FP16 baseline through INT state quantization, ESR-style reconstruction, SmoothQuant W8A8, FP8 state quantization, and Hadamard rotations for suppressing state outliers.
 
 This project builds on [**Q-Mamba: Towards More Efficient Mamba Models via Post-Training Quantization**](https://aclanthology.org/2025.findings-acl.551/) by Chen Tianqi et al. (Findings of ACL 2025), which introduced Decoupled Scale Quantization (DSQ) and Efficient Selectivity Reconstruction (ESR) for quantized Mamba models. This repository explores those ideas and extends the state-quantization study with FP8 formats and Hadamard rotations.
 
@@ -35,7 +35,7 @@ The FP8 baseline results are recorded in [`qmamba_phase4/results/fp8_state_sweep
 
 ## Method
 
-For each Mamba2 layer, recurrent inference maintains an SSM state with shape `[B, H, P, N]`, where `P` is the per-head channel dimension and `N` is the state dimension. QMamba intercepts the recurrent `step` path and fake-quantizes this state before the next update.
+For each Mamba2 layer, recurrent inference maintains an SSM state with shape `[B, H, P, N]`, where `P` is the per-head channel dimension and `N` is the state dimension. Q-Mamba intercepts the recurrent `step` path and fake-quantizes this state before the next update.
 
 Supported approaches include:
 
