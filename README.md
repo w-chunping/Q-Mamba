@@ -4,6 +4,8 @@
 
 QMamba is a research prototype for studying how low-precision state representations affect autoregressive Mamba2 inference. The repository builds from an FP16 baseline through INT state quantization, ESR-style reconstruction, SmoothQuant W8A8, FP8 state quantization, and Hadamard rotations for suppressing state outliers.
 
+This project builds on [**Q-Mamba: Towards More Efficient Mamba Models via Post-Training Quantization**](https://aclanthology.org/2025.findings-acl.551/) by Chen Tianqi et al. (Findings of ACL 2025), which introduced Decoupled Scale Quantization (DSQ) and Efficient Selectivity Reconstruction (ESR) for quantized Mamba models. This repository explores those ideas and extends the state-quantization study with FP8 formats and Hadamard rotations.
+
 The central finding is that Mamba2's recurrent SSM state is highly sensitive to coarse integer quantization, but much more robust to scaled FP8. A normalized Hadamard transform along the state dimension improves FP8 further by redistributing outliers before quantization.
 
 ## Highlights
@@ -162,6 +164,26 @@ PYTHONPATH=$PWD python scripts/inspect_hadamard_state_error.py \
 ```
 
 See [`README_HADAMARD_STATE.md`](qmamba_hadamard_state_addons/README_HADAMARD_STATE.md) for all Hadamard options, [`README_FP8_STATE.md`](qmamba_phase4/README_FP8_STATE.md) for FP8 scale granularities, and the phase-specific READMEs for the earlier experiments.
+
+## Citation
+
+If you use this repository, please cite the original Q-Mamba paper:
+
+```bibtex
+@inproceedings{tianqi-etal-2025-q,
+  title     = {{Q}-Mamba: Towards more efficient Mamba models via post-training quantization},
+  author    = {Tianqi, Chen and Chen, Yuanteng and Wang, Peisong and
+               Xu, Weixiang and Zhu, Zeyu and Cheng, Jian},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2025},
+  year      = {2025},
+  month     = jul,
+  address   = {Vienna, Austria},
+  publisher = {Association for Computational Linguistics},
+  pages     = {10594--10610},
+  url       = {https://aclanthology.org/2025.findings-acl.551/},
+  doi       = {10.18653/v1/2025.findings-acl.551}
+}
+```
 
 ## Limitations
 
